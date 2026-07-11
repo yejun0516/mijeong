@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://6kkul7i003pj"]
+
+[ext_resource type="Texture2D" uid="uid://wcrv5ckg1xij" path="res://mijeong.png.png" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://sanpnxyahat6" path="res://main.gd" id="1_r0du0"]
+[ext_resource type="Script" uid="uid://bewnla8clsw4e" path="res://area_2d.gd" id="1_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://b1er53ysr8433" path="res://background.png" id="4_cm0pq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trde1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
+bg_color = Color(0.8586215, 0.46254948, 0.52912915, 0.80100006)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 4
+
+[node name="Node2D" type="Node2D" unique_id=1743282965]
+script = ExtResource("1_r0du0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1136059367]
+scale = Vector2(0.2, 0.2)
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=637752999]
+script = ExtResource("1_uu6xs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1135614017]
+shape = SubResource("RectangleShape2D_trde1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1139679981]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=2063877446]
+offset_top = 1.0
+offset_right = 396.0
+offset_bottom = 841.0
+texture = ExtResource("4_cm0pq")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Mijeong_png" type="Sprite2D" parent="CanvasLayer" unique_id=1068479610]
+position = Vector2(196, 90)
+scale = Vector2(0.14941405, 0.13632813)
+texture = ExtResource("1_glv2v")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1810261716]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ekdma" type="Button" parent="CanvasLayer/Control" unique_id=1315830796]
+custom_minimum_size = Vector2(220, 80)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 727.0
+offset_right = 314.0
+offset_bottom = 807.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_fos0i")
+text = "🍎 밥 주기"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=666573359]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 152.0
+offset_right = 361.0
+offset_bottom = 667.0
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Control/Panel" unique_id=617833241]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 8.0
+offset_right = 302.0
+offset_bottom = 83.0
+text = "🐹 미정의 한마디"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel" unique_id=40226215]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 96.0
+offset_right = 302.0
+offset_bottom = 171.0
+text = " 밥을 주면 
+ 미정이가 보는 너를 알려줄게!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/ekdma" to="." method="_on_button_pressed"]
